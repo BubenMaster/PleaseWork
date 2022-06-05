@@ -9,11 +9,11 @@ public class SandyClass {
 
         String firstStr = "first ";
         String secondStr = firstStr + "second ";
-        firstStr.concat("third ");
-        secondStr.concat(firstStr);
+
         firstStr += "fouth ";
         System.out.println(firstStr + " " + secondStr);
         System.out.println("GitGUD");
+        System.out.println("One little change");
 
     }
 }
