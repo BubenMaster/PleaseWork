@@ -13,7 +13,7 @@ public class SandyClass {
         firstStr += "fouth ";
         System.out.println(firstStr + " " + secondStr);
         System.out.println("GitGUD");
-        System.out.println("One little change");
+        System.out.println("AND SO");
 
     }
 }
