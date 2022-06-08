@@ -17,17 +17,18 @@ public class PasswordGenerator{
     private final static char[] highCaseSymbol = new char[]{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
     private final static char[] numericSymbol = new char[]{'1', '2', '3', '4', '5', '6', '7', '8', '9', '0'};
 
-    private static final Random randomizer = new Random();
+    private static final Random randomiser = new Random();
     private static SymbolicTypes[] symbolTypeMask;
     private static int[] symbolPossiblePositions;
     private static String password;
+    private static final int usedPosition = -1;
 
     public static ByteArrayOutputStream generatePassword(int lengthOfPassword) {
         ByteArrayOutputStream result = new ByteArrayOutputStream();
         symbolPossiblePositions = createPositionsMask(lengthOfPassword);
         symbolTypeMask = createSymbolTypeMask(lengthOfPassword);
-        //System.out.println(Arrays.toString(symbolTypeMask));
-        //System.out.println(Arrays.toString(allPositions));
+        //System.out.println(Arrays.toString(symbolTypeMask));  //
+        //System.out.println(Arrays.toString(symbolPossiblePositions));  //
         password = assemblePassword(lengthOfPassword, symbolPossiblePositions, symbolTypeMask);
         writePasswordToResult(result, password);
         return result;
@@ -45,12 +46,12 @@ public class PasswordGenerator{
     private static String assemblePassword(int lengthOfPassword, int[] symbolPossiblePositions, SymbolicTypes[] symbolTypeMask) {
         StringBuffer resultBuffer = new StringBuffer();
         for (int i = 0; i < lengthOfPassword; i++) {
-            int iRand;
-            do iRand = symbolPossiblePositions[randomizer.nextInt(lengthOfPassword)];
-            while (iRand == -1);
-            symbolPossiblePositions[iRand] = -1;
-            //System.out.print(iRand+" ,");
-            resultBuffer.append(generateNextRandomSymbol(symbolTypeMask[iRand]));
+            int randomisedPosition;
+            do randomisedPosition = symbolPossiblePositions[randomiser.nextInt(lengthOfPassword)];
+            while (randomisedPosition == usedPosition);
+            symbolPossiblePositions[randomisedPosition] = usedPosition;
+            //System.out.print(randomisedPosition+" ,");
+            resultBuffer.append(generateNextRandomSymbol(symbolTypeMask[randomisedPosition]));
         }
         return resultBuffer.toString();
     }
@@ -80,23 +81,21 @@ public class PasswordGenerator{
 
     //Produce random symbol from
     private static String generateNextRandomSymbol(SymbolicTypes typeOfSymbol) {
-        char symbol = ' ';
-        if (null != typeOfSymbol){
-            symbol = switch (typeOfSymbol) {
-                case numeric:
-                    yield randomChar(numericSymbol);
-                case highCase:
-                    yield randomChar(highCaseSymbol);
-                case lowCase:
-                    yield randomChar(lowCaseSymbol);
-            };
-        }
+        char symbol;
+        symbol = switch (typeOfSymbol) {
+            case numeric:
+                yield randomChar(numericSymbol);
+            case highCase:
+                yield randomChar(highCaseSymbol);
+            case lowCase:
+                yield randomChar(lowCaseSymbol);
+        };
         return String.valueOf(symbol);
     }
 
     //Pulls random value from chosen symbol array
     private static char randomChar(char[] symbols) {
-        return symbols[randomizer.nextInt(symbols.length)];
+        return symbols[randomiser.nextInt(symbols.length)];
     }
 
 

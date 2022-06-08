@@ -1,6 +1,9 @@
 package com.yoj.collections.level2.part6.PasswordGenerator;
 
 
+import java.util.Arrays;
+import java.util.Random;
+
 //Spits the range of numbers randomly on selected pieces
 public class RangeRandomSplitter {
     private Random randomiser = new Random();
