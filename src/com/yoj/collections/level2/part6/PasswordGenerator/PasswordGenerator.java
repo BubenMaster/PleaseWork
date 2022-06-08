@@ -58,12 +58,12 @@ public class PasswordGenerator{
     //Create array with random ranges of symbol types
     private static SymbolicTypes[] createSymbolTypeMask(int lengthOfMask) {
         SymbolicTypes[] result = new SymbolicTypes[lengthOfMask];
-//DRY
-        int lowCaseRandomisedAmount = randomizer.nextInt(1, lengthOfMask - 2),
-            highCaseRandomisedAmount = randomizer.nextInt(1, lengthOfMask - 1 - lowCaseRandomisedAmount),
-            numericRandomAmount = lengthOfMask - lowCaseRandomisedAmount - highCaseRandomisedAmount;
-        // System.out.printf("low reg: %d, high reg: %d, numbers: %d ", lRegCount,hRegCount,numCount);
-        Arrays.fill(result,0,lowCaseRandomisedAmount-1, SymbolicTypes.lowCase);
+        int Amounts[] = RangeRandomSplitter.getInstance().split(lengthOfMask,3);
+        int lowCaseRandomisedAmount = Amounts[0],
+            highCaseRandomisedAmount = Amounts[1],
+            numericRandomAmount = Amounts[2];
+        // System.out.printf("low reg: %d, high reg: %d, numbers: %d ", lowCaseRandomisedAmount,highCaseRandomisedAmount,numericRandomAmount);
+        Arrays.fill(result,0,lowCaseRandomisedAmount, SymbolicTypes.lowCase);
         Arrays.fill(result,lowCaseRandomisedAmount,lowCaseRandomisedAmount + highCaseRandomisedAmount, SymbolicTypes.highCase);
         Arrays.fill(result,lowCaseRandomisedAmount + highCaseRandomisedAmount,lowCaseRandomisedAmount + highCaseRandomisedAmount + numericRandomAmount, SymbolicTypes.numeric);
         return result;
