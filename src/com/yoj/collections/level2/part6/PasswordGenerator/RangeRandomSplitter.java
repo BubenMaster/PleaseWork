@@ -35,11 +35,11 @@ public class RangeRandomSplitter {
         int sumOfGeneratedPieces = 0,
             rangeReducer = (pieces - 1) * minimalPiece;
         for (int i = 0; i < result.length - 1; i++) {
-            int bound = (range - rangeReducer - sumOfGeneratedPieces),// *RANDOM_MULTIPLIER,
-                origin = minimalPiece;// *RANDOM_MULTIPLIER;
+            int bound = (range - rangeReducer - sumOfGeneratedPieces) *RANDOM_MULTIPLIER,
+                origin = minimalPiece *RANDOM_MULTIPLIER;
             if (bound > origin) {
                  float subResult = randomiser.nextInt(origin, bound);
-                result[i] = Math.round(subResult);// / RANDOM_MULTIPLIER);
+                result[i] = Math.round(subResult / RANDOM_MULTIPLIER);
             }
             else result[i] = minimalPiece;
             sumOfGeneratedPieces += result[i];
