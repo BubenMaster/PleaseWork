@@ -21,11 +21,11 @@ public class SimulatorForPasswordGenerator {
             password = PasswordGenerator.generatePassword(lengthOfPassword);
           //  System.out.println();
           // System.out.println(password.toString());
-            int simulatedRange = i,  //randy.nextInt(i, i+20),
+            int simulatedRange = 15,  //randy.nextInt(i, i+20),
                   //  simulatedPieces = randy.nextInt(1,simulatedRange / 3);
-                simulatedPieces = 5;
+                simulatedPieces = 14;
             int[] simulatedResult = RangeRandomSplitter.getInstance().splitWithMinimalPiece(simulatedRange, simulatedPieces, 1);
-            System.out.printf(" %B ", (Arrays.stream(simulatedResult).sum() == simulatedRange));
+            // System.out.printf(" %B ", (Arrays.stream(simulatedResult).sum() == simulatedRange));
             System.out.printf("Range: %d, pieces: %d, Split result: %s%n",simulatedRange, simulatedPieces, Arrays.toString(simulatedResult));
         }
 
