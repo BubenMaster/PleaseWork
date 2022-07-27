@@ -1,10 +1,8 @@
 package com.yoj.collections.level2.part6.PasswordGenerator;
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.Random;
-import java.util.random.RandomGenerator;
 
 
 public class SimulatorForPasswordGenerator {
@@ -30,16 +28,16 @@ public class SimulatorForPasswordGenerator {
 
     private static void testForRelativeMassOfElements(){
         for (int i = 1; i < 6; i++) {
-            showRelativeElementsDistributionAverageFrom50SimulationsFor(i*20,19);
+            showRelativeElementsDistributionAverageFrom100SimulationsFor(i*20,19);
         }
         for (int i = 1; i < 6; i++) {
-            showRelativeElementsDistributionAverageFrom50SimulationsFor(30,i+1);
+            showRelativeElementsDistributionAverageFrom100SimulationsFor(30,i+1);
         }
     }
 
-    private static void showRelativeElementsDistributionAverageFrom50SimulationsFor(int range, int pieces){
+    private static void showRelativeElementsDistributionAverageFrom100SimulationsFor(int range, int pieces){
         int[] summaryOfSimulations = new int[pieces];
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 100; i++) {
             int[] singleSimulation = RangeRandomSplitter.getInstance().splitWithMinimalPiece(range, pieces, 1);
             appendArraySourceTo(summaryOfSimulations, singleSimulation);
 
