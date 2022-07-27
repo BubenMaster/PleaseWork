@@ -12,9 +12,7 @@ public class SimulatorForPasswordGenerator {
     public static void main(String[] args) {
         ByteArrayOutputStream password = PasswordGenerator.generatePassword(lengthOfPassword);
         System.out.println();
-        System.out.println(password.toString());
-        Random randy = new Random();
-        password = PasswordGenerator.generatePassword(lengthOfPassword);
+        System.out.println(password);
         testForRelativeMassOfElements();
     }
 
