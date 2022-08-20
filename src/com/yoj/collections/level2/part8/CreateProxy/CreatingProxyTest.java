@@ -1,8 +1,8 @@
-package com.yoj.collections.level2.part8;
+package com.yoj.collections.level2.part8.CreateProxy;
 
 import java.lang.reflect.Proxy;
 
-public class CreatingProxy {
+public class CreatingProxyTest {
     public static void main(String[] args) {
         SomeInterfaceWithMethods obj = getProxy();
         obj.stringMethodWithoutArgs();

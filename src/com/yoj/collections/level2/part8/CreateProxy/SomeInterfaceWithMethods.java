@@ -1,4 +1,4 @@
-package com.yoj.collections.level2.part8;
+package com.yoj.collections.level2.part8.CreateProxy;
 
 public interface SomeInterfaceWithMethods {
 

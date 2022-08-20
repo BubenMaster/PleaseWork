@@ -1,4 +1,4 @@
-package com.yoj.collections.level2.part8;
+package com.yoj.collections.level2.part8.CreateProxy;
 
 public class SomeInterfaceWithMethodsImpl implements SomeInterfaceWithMethods{
 

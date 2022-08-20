@@ -1,4 +1,4 @@
-package com.yoj.collections.level2.part8;
+package com.yoj.collections.level2.part8.CreateProxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
