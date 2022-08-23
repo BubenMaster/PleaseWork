@@ -13,6 +13,7 @@ import java.rmi.server.UnicastRemoteObject;
 
 public class RmiClientTest {
     public static String UNIC_BINDING_NAME = "double.string";
+    private static String  TestingWord = "Jo";
     public static Registry registry;
     public static int port = 2099;
 
@@ -23,7 +24,8 @@ public class RmiClientTest {
             try {
 
                 service = (DoubleString) registry.lookup(UNIC_BINDING_NAME);
-                System.out.println(service.doubleString("Jo"));
+
+                System.out.println(service.doubleString(TestingWord));
 
 
             } catch (RemoteException | NotBoundException e) {
