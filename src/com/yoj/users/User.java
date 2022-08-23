@@ -1,11 +1,31 @@
 package com.yoj.users;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+
 import java.util.Objects;
 
+
+@JsonAutoDetect
 public class User {
+
+    private Cars car;
 
     private String name;
     private int age;
+
+    public User() {
+        this.name = "null";
+        this.age = 0;
+        car = new Cars("zhoper", true);
+    }
+
+    public Cars getCar() {
+        return car;
+    }
+
+    public void setCar(Cars car) {
+        this.car = car;
+    }
 
     public String getName() {
         return name;
@@ -37,6 +57,15 @@ public class User {
             this.age = age;
             return 0;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "car=" + car +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                '}';
     }
 
     @Override
